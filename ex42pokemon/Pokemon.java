@@ -4,20 +4,39 @@ public class Pokemon {
 	private String nom;
 	private int pv;
 	private int atk;
-	public Pokemon (String nom, int pv, int atk){
+
+	public Pokemon(String nom ,int pv, int atk) {
+		super();
 		this.nom = nom;
-		this.pv= pv;
+		this.pv = pv;
 		this.atk = atk;
 	}
-	public boolean estKo() {
-		return pv==0;
+
+	public String getNom() {
+		return nom;
 	}
-	private void prendreDegats (int deg) {
-		this.pv -= deg;
-		if(pv<0)
-		    pv =0;
+
+	public int getPv() {
+		return pv;
 	}
-	public void attaquer(Pokemon p) {
-		p.prendreDegats(atk);
+
+	public int getAtk() {
+		return atk;
 	}
+
+	public boolean estKO() {
+		return pv <= 0;
+	}
+
+	protected void infligerDegats(int degats) {
+		pv -= degats;
+		if (pv < 0)
+			pv = 0;
+	}
+
+	@Override
+	public String toString() {
+		return "[Pokémon (" + nom + "), atk : " + atk + ", pv : " + pv + "]";
+	}
+
 }
